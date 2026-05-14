@@ -61,6 +61,14 @@ Hi! My name is Rohan Sharma.
     </a>
 </div>
 
+<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+    <a href="{{site.baseurl}}/cs111-objectives" style="text-decoration: none;">
+        <div style="background-color: var(--green); color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold; transition: transform 0.2s, box-shadow 0.2s;">
+           JS Basics
+        </div>
+    </a>
+</div>
+
 <br>
 
 ### Class Progress
