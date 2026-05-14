@@ -66,10 +66,10 @@ Hi! My name is Rohan Sharma.
 <br>
 <br>
 
-# Here is my CS111 Objectives lesson:
+## Here is my CS111 Objectives lesson:
 
 
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -127,9 +127,9 @@ Hi! My name is Rohan Sharma.
 <br>
 <br>
 
-# Here are some of the lessons that I have made and curated!
+## Here are some of the lessons that I have made and curated!
 
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
