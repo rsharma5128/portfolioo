@@ -9,7 +9,6 @@ Hi! My name is Rohan Sharma.
 
 ## About me
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -64,7 +63,7 @@ Hi! My name is Rohan Sharma.
 
 ## Here are some of the lessons that I have made and curated!
 
-
+<br>
 
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
     <a href="{{site.baseurl}}/cs111-objectives" style="text-decoration: none;">
