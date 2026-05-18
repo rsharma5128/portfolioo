@@ -66,7 +66,7 @@ Hi! My name is Rohan Sharma.
 <br>
 <br>
 
-## Here is my CS111 Objectives lesson:
+## Here is my CS111 Objectives blog:
 
 
 
@@ -118,7 +118,7 @@ Hi! My name is Rohan Sharma.
   </style>
 </head>
 <body>
-  <a href="https://rsharma5128.github.io/cs111-objectives/" class="glow-btn">CS111 Objectives</a>
+  <a href="/portfolioo/cs111-objectives" class="glow-btn">CS111 Objectives</a>
 </body>
 </html>
 
