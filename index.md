@@ -118,7 +118,7 @@ Hi! My name is Rohan Sharma.
   </style>
 </head>
 <body>
-  <a href="/portfolioo/cs111-objectives" class="glow-btn">CS111 Objectives</a>
+  <a href="/cs111-objectives" class="glow-btn">CS111 Objectives</a>
 </body>
 </html>
 
