@@ -34,7 +34,7 @@ class Projectile extends Character {
         this.width = 60; // scale down if needed
         this.height = 70;  // Made even taller to fix vertical squashing
         this.spriteSheet.onload = () => this.imageLoaded = true;
-        this.spriteSheet.src = path + "/images/sorcerers/arrow.png";
+        this.spriteSheet.src = path + "/images/castle-game/arrow.png";
 
         // Start at source position
         this.position = { x: sourcex, y: sourcey };
