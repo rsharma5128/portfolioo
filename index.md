@@ -118,7 +118,10 @@ Hi! My name is Rohan Sharma.
   </style>
 </head>
 <body>
-  <a href="/cs111-objectives" class="glow-btn">CS111 Objectives</a>
+  <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;align-items:center;">
+    <a href="/cs111-objectives" class="glow-btn">CS111 Objectives</a>
+    <a href="https://pages.opencodingsociety.com/spline-barriers" class="glow-btn">Spline Barriers</a>
+  </div>
 </body>
 </html>
 
