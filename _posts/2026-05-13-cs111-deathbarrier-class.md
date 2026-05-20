@@ -6,8 +6,8 @@ permalink: /cs111-deathbarrier-class
 author: Rohan Sharma
 ---
 
-<div style="position:fixed;top:1rem;left:1rem;z-index:9999;">
-  <a href="/" style="display:inline-block;padding:0.75rem 1rem;background:#e3342f;color:#fff;border-radius:0.5rem;text-decoration:none;font-weight:700;box-shadow:0 4px 12px rgba(0,0,0,0.15);">Go back to homepage</a>
+<div style="position:fixed;top:5.5rem;left:1rem;z-index:99999;">
+  <a href="/cs111-objectives" style="display:inline-block;padding:1.1rem 1.4rem;background:#ff4d4d;color:#fff;border-radius:1rem;text-decoration:none;font-weight:900;font-size:1rem;letter-spacing:0.03em;box-shadow:0 8px 24px rgba(0,0,0,0.3);border:2px solid rgba(255,255,255,0.9);">Go back to homepage</a>
 </div>
 
 ## DeathBarrier Class: Collision Trigger
