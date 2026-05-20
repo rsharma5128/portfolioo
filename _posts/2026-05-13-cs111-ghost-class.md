@@ -6,6 +6,10 @@ permalink: /cs111-ghost-class
 author: Rohan Sharma
 ---
 
+<div style="position:fixed;top:1rem;left:1rem;z-index:9999;">
+  <a href="/" style="display:inline-block;padding:0.75rem 1rem;background:#e3342f;color:#fff;border-radius:0.5rem;text-decoration:none;font-weight:700;box-shadow:0 4px 12px rgba(0,0,0,0.15);">Go back to homepage</a>
+</div>
+
 ## Ghost Class: Hostile NPC
 
 ### Overview
