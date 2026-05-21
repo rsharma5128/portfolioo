@@ -18,6 +18,9 @@ The SpriteSheetCoin class extends the Coin base class to implement collectible i
 ### File Location
 `_projects/games/castle-game/levels/SpriteSheetCoin.js`
 
+## Quick Concept
+Asynchronous image loading means starting an image request and continuing execution while the file downloads. The code listens for an onload or resolves a promise when the image is ready, avoiding frame freezes. This pattern ensures sprites render only after resources are available and allows graceful fallbacks.
+
 ### Class Hierarchy
 ```
 GameObject (base engine class)

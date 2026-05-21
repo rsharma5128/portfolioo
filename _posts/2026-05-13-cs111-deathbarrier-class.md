@@ -18,6 +18,9 @@ The DeathBarrier class extends the Barrier base class to implement collision-tri
 ### File Location
 `_projects/games/castle-game/levels/DeathBarrier.js`
 
+## Quick Concept
+A "grace period" is a short time interval after an event during which repeated triggers are ignored. In collision handling it prevents immediate retriggering from jittery contact or overlapping frames. This helps avoid unfair double-deaths and gives the player a small recovery window.
+
 ### Class Hierarchy
 ```
 GameObject (base engine class)

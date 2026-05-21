@@ -18,6 +18,9 @@ The Ghost class extends the Enemy base class to implement a hostile NPC with pat
 ### File Location
 `_projects/games/castle-game/levels/Ghost.js`
 
+## Quick Concept
+The ghost uses axis selection to decide its facing direction by comparing horizontal and vertical distances. It picks the larger absolute delta (|dx| vs |dy|) and chooses left/right when horizontal is larger or up/down when vertical is larger. This simple heuristic selects a primary movement/facing axis without needing full pathfinding.
+
 ### Class Hierarchy
 ```
 GameObject (base engine class)

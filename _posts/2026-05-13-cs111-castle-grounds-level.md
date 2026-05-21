@@ -18,6 +18,9 @@ Castle Grounds is the first game level introducing player customization, NPC int
 ### File Location
 `_projects/games/castle-game/levels/GameLevelOutside.js`
 
+## Quick Concept
+`localStorage` persistence stores small pieces of data in the browser so they survive page reloads. It is commonly used to remember player preferences like chosen skins without a server round-trip. Using `localStorage` allows simple, persistent customization across sessions.
+
 ### Level Features
 - **Player Customization**: Choose between 3 knight skins
 - **Persistent Storage**: localStorage saves player preferences
