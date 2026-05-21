@@ -51,3 +51,24 @@ Castle Grounds is the first game level introducing player customization, NPC int
 - API integration for NPC AI responses
 - State management for player progression
 - Canvas rendering for parallax effects
+
+## Code Example
+```javascript
+// Level instantiation + localStorage skin
+const cfg = { width: 800, height: 600, skinKey: localStorage.getItem('skin') || 'knight1' };
+const outside = new GameLevelOutside(cfg, gameEnv);
+
+outside.init();
+
+// keyboard input example
+window.addEventListener('keydown', e => {
+  if (e.key === 'ArrowUp' || e.key === 'w') player.moveUp();
+});
+
+// simple API fetch for NPC
+async function fetchNpcHints(npcId) {
+  const res = await fetch(`/api/npc/${npcId}`);
+  if (!res.ok) throw new Error(res.statusText);
+  return res.json();
+}
+```

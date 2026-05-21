@@ -50,3 +50,26 @@ GameObject (base engine class)
 - Super() call ensures parent initialization
 - Overrides parent methods for custom behavior
 - Implements distance calculation with physics math
+
+## Code Example
+```javascript
+// method: followPlayer(player, maxDistance)
+followPlayer(player, maxDistance = 300) {
+  const dx = player.x - this.x;
+  const dy = player.y - this.y;
+  const dist = Math.hypot(dx, dy);
+  if (dist > maxDistance) return;
+  const nx = dx / dist; const ny = dy / dist;
+  this.velocity.x += nx * this.speed;
+  this.velocity.y += ny * this.speed;
+}
+
+update(dt) {
+  if (!this.isActive) return;
+  // simple decision-making
+  if (this.seesPlayer && !this.isStunned) {
+    this.followPlayer(this.targetPlayer);
+  }
+  super.update(dt);
+}
+```

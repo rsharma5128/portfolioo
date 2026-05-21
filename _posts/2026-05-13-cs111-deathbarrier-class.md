@@ -50,3 +50,22 @@ GameObject (base engine class)
 - Grace period prevents instant death on edge cases
 - Boolean logic for state management
 - Strategic console logging for debugging
+
+## Code Example
+```javascript
+handleCollision(entity) {
+  try {
+    const now = performance.now();
+    if (this._lastHit && now - this._lastHit < this.gracePeriod) return;
+    this._lastHit = now;
+    console.log('DeathBarrier: collision', entity.id);
+    if (entity.type === 'player') {
+      // nested conditional for corner cases
+      if (entity.invulnerable) return;
+      this.applyDeathPenalty(entity);
+    }
+  } catch (err) {
+    console.error('DeathBarrier error', err);
+  }
+}
+```

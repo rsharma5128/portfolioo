@@ -51,3 +51,22 @@ GameObject (base engine class)
 - Sprite coordinate calculation for frame rendering
 - Canvas drawImage() with source region
 - Error handling for image load failures
+
+## Code Example
+```javascript
+async loadSpriteSheet(src) {
+  this.spriteImage = new Image();
+  await new Promise((res, rej) => {
+    this.spriteImage.onload = res;
+    this.spriteImage.onerror = rej;
+    this.spriteImage.src = src;
+  });
+  this.loaded = true;
+}
+
+draw(ctx) {
+  if (!this.loaded) return super.draw(ctx);
+  const fw = this.frameWidth;
+  ctx.drawImage(this.spriteImage, this.currentFrame * fw, 0, fw, this.frameHeight, this.x, this.y, fw, this.frameHeight);
+}
+```
