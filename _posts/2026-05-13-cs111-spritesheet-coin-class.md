@@ -55,21 +55,134 @@ GameObject (base engine class)
 - Canvas drawImage() with source region
 - Error handling for image load failures
 
-## Code Example
+## Code Example - Class Definition with Inheritance
+
 ```javascript
-async loadSpriteSheet(src) {
-  this.spriteImage = new Image();
-  await new Promise((res, rej) => {
-    this.spriteImage.onload = res;
-    this.spriteImage.onerror = rej;
-    this.spriteImage.src = src;
-  });
-  this.loaded = true;
+import Coin from '@assets/js/GameEnginev1.1/Coin.js';
+
+/**
+ * SpriteSheetCoin extends the basic Coin class to support image/spritesheet rendering.
+ * Instead of a colored circle, you can now display any image asset (gem, star, etc).
+ */
+class SpriteSheetCoin extends Coin {
+	constructor(data = null, gameEnv = null) {
+		super(data, gameEnv);
+		
+		this.spriteImagePath = data?.spriteImagePath || null;
+		this.spriteImage = null;
+		this.isImageLoaded = false;
+		this.spriteFrames = data?.spriteFrames || { rows: 1, columns: 1, frameIndex: 0 };
+		this.fallbackToCircle = data?.fallbackToCircle !== false; // Default true
+		this.spawnLocations = Array.isArray(data?.spawnLocations) ? data.spawnLocations : null;
+		
+		// Load the image if provided
+		if (this.spriteImagePath) {
+			this.loadImage();
+		}
+	}
+
+	/**
+	 * Load the sprite image asynchronously
+	 */
+	loadImage() {
+		const img = new Image();
+		img.onload = () => {
+			this.spriteImage = img;
+			this.isImageLoaded = true;
+			console.log(`SpriteSheetCoin image loaded: ${this.spriteImagePath}`);
+		};
+		img.onerror = () => {
+			console.warn(`Failed to load SpriteSheetCoin image: ${this.spriteImagePath}`);
+			this.isImageLoaded = false;
+		};
+		img.src = this.spriteImagePath;
+	}
+
+	/**
+	 * Draw the coin using spritesheet if available, otherwise fall back to colored circle
+	 */
+	draw() {
+		if (!this.ctx) return;
+		
+		// Clear the canvas
+		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+		
+		if (this.collected) return;
+		
+		// Draw sprite image if loaded
+		if (this.isImageLoaded && this.spriteImage) {
+			this.drawSpriteImage();
+		} else if (this.fallbackToCircle) {
+			// Fall back to the original colored circle
+			this.drawCircle();
+		}
+		
+		// Call setupCanvas to position the canvas (normally done in Character.draw())
+		this.setupCanvas();
+	}
+
+	/**
+	 * Draw the sprite image on the canvas
+	 */
+	drawSpriteImage() {
+		const { rows, columns, frameIndex } = this.spriteFrames;
+		
+		// Calculate frame dimensions
+		const frameWidth = this.spriteImage.width / columns;
+		const frameHeight = this.spriteImage.height / rows;
+		
+		// Calculate which frame to display based on frameIndex
+		const currentFrameIndex = frameIndex % (rows * columns);
+		const row = Math.floor(currentFrameIndex / columns);
+		const col = currentFrameIndex % columns;
+		
+		const sourceX = col * frameWidth;
+		const sourceY = row * frameHeight;
+		
+		// Draw the sprite frame centered on the canvas
+		const centerX = this.canvas.width / 2;
+		const centerY = this.canvas.height / 2;
+		const drawWidth = this.canvas.width;
+		const drawHeight = this.canvas.height;
+		
+		this.ctx.drawImage(
+			this.spriteImage,
+			sourceX, sourceY,           // Source position
+			frameWidth, frameHeight,    // Source size
+			centerX - drawWidth / 2, centerY - drawHeight / 2, // Destination position (centered)
+			drawWidth, drawHeight       // Destination size
+		);
+	}
+
+	/**
+	 * Draw the fallback colored circle (original Coin behavior)
+	 */
+	drawCircle() {
+		this.ctx.fillStyle = this.color;
+		const centerX = this.canvas.width / 2;
+		const centerY = this.canvas.height / 2;
+		const radius = Math.min(this.canvas.width, this.canvas.height) / 3;
+		
+		this.ctx.beginPath();
+		this.ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+		this.ctx.fill();
+		
+		// Add a border to make it more visible
+		this.ctx.strokeStyle = '#B8860B'; // Dark gold
+		this.ctx.lineWidth = 2;
+		this.ctx.stroke();
+	}
 }
 
-draw(ctx) {
-  if (!this.loaded) return super.draw(ctx);
-  const fw = this.frameWidth;
-  ctx.drawImage(this.spriteImage, this.currentFrame * fw, 0, fw, this.frameHeight, this.x, this.y, fw, this.frameHeight);
-}
+export default SpriteSheetCoin;
 ```
+
+## Key Features Demonstrated
+
+1. **Class Definition**: `class SpriteSheetCoin extends Coin` - shows inheritance syntax
+2. **Constructor Chaining**: `super(data, gameEnv)` - calls parent constructor
+3. **Asynchronous Image Loading**: `loadImage()` method with Image onload/onerror callbacks (lines 26-36)
+4. **Method Overriding**: `draw()` method overrides parent implementation with conditional logic
+5. **Fallback Pattern**: Checks if image loaded, falls back to circle rendering if not (lines 50-54)
+6. **Canvas API Usage**: `drawImage()`, `arc()`, `fillStyle`, `fillPath()` for rendering
+7. **JSDoc Comments**: Comprehensive documentation for class and methods

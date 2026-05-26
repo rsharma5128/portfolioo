@@ -54,25 +54,88 @@ GameObject (base engine class)
 - Overrides parent methods for custom behavior
 - Implements distance calculation with physics math
 
-## Code Example
+## Code Example - Class Definition with Inheritance
+
 ```javascript
-// method: followPlayer(player, maxDistance)
-followPlayer(player, maxDistance = 300) {
-  const dx = player.x - this.x;
-  const dy = player.y - this.y;
-  const dist = Math.hypot(dx, dy);
-  if (dist > maxDistance) return;
-  const nx = dx / dist; const ny = dy / dist;
-  this.velocity.x += nx * this.speed;
-  this.velocity.y += ny * this.speed;
+import Enemy from '@assets/js/GameEnginev1.1/essentials/Enemy.js';
+import Player from '@assets/js/GameEnginev1.1/essentials/Player.js';
+import showDeathScreen from './DeathScreen.js';
+
+class Ghost extends Enemy {
+    constructor(data, gameEnv) {
+        super(data, gameEnv);
+        this.followSpeedFactor = data?.followSpeedFactor ?? 0.4;
+        this.followStopDistance = data?.followStopDistance ?? 8;
+        this._hasTriggeredDeath = false;
+    }
+
+    getPlayer() {
+        return this.gameEnv?.gameObjects?.find(obj => obj instanceof Player) || null;
+    }
+
+    followPlayer(player) {
+        if (!player) return;
+
+        const ghostCenter = this.getCenter();
+        const playerCenter = typeof player.getCenter === 'function'
+            ? player.getCenter()
+            : { x: player.x || 0, y: player.y || 0 };
+
+        const dx = playerCenter.x - ghostCenter.x;
+        const dy = playerCenter.y - ghostCenter.y;
+        const distance = Math.hypot(dx, dy);
+
+        if (distance <= this.followStopDistance) {
+            this.velocity.x = 0;
+            this.velocity.y = 0;
+            return;
+        }
+
+        const baseSpeed = player?.xVelocity || (this.gameEnv?.innerWidth || 800) / 2000;
+        const speed = Math.max(0.3, baseSpeed * this.followSpeedFactor);
+        const nx = dx / distance;
+        const ny = dy / distance;
+
+        this.position.x += nx * speed;
+        this.position.y += ny * speed;
+
+        if (Math.abs(dx) >= Math.abs(dy)) {
+            this.direction = dx >= 0 ? 'right' : 'left';
+        } else {
+            this.direction = dy >= 0 ? 'down' : 'up';
+        }
+    }
+
+    update() {
+        const player = this.getPlayer();
+        if (player && !player.isDead) {
+            this.followPlayer(player);
+        }
+        super.update();
+    }
+
+    handleCollisionEvent() {
+        if (this._hasTriggeredDeath || this.playerDestroyed) return;
+
+        const player = this.getPlayer();
+        if (!player || player.isDead) return;
+
+        this._hasTriggeredDeath = true;
+        this.playerDestroyed = true;
+        player.isDead = true;
+
+        showDeathScreen(player, 'The ghost caught you.');
+    }
 }
 
-update(dt) {
-  if (!this.isActive) return;
-  // simple decision-making
-  if (this.seesPlayer && !this.isStunned) {
-    this.followPlayer(this.targetPlayer);
-  }
-  super.update(dt);
-}
+export default Ghost;
 ```
+
+## Key Features Demonstrated
+
+1. **Class Definition**: `class Ghost extends Enemy` - shows inheritance syntax
+2. **Constructor Chaining**: `super(data, gameEnv)` - calls parent constructor
+3. **Method Overriding**: `update()` method overrides parent implementation
+4. **Method Implementation**: `followPlayer()`, `getPlayer()`, `handleCollisionEvent()`
+5. **Distance Calculation**: `Math.hypot(dx, dy)` for accurate distance
+6. **Direction Logic**: Nested conditionals to determine ghost facing direction

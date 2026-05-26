@@ -55,23 +55,102 @@ Castle Grounds is the first game level introducing player customization, NPC int
 - State management for player progression
 - Canvas rendering for parallax effects
 
-## Code Example
+## Code Example - Level Configuration and Object Instantiation
+
 ```javascript
-// Level instantiation + localStorage skin
-const cfg = { width: 800, height: 600, skinKey: localStorage.getItem('skin') || 'knight1' };
-const outside = new GameLevelOutside(cfg, gameEnv);
+class GameLevelOutside {
+    constructor(gameEnv) {
+        const width = gameEnv.innerWidth;
+        const height = gameEnv.innerHeight;
+        const path = gameEnv.path;
 
-outside.init();
+        // Floor background configuration
+        const image_src_floor = path + "/images/projects/castle-game/castleOutsideV2.png";
+        const image_data_floor = {
+            name: 'floor',
+            src: image_src_floor,
+            pixels: { height: 989, width: 1582 }
+        };
 
-// keyboard input example
-window.addEventListener('keydown', e => {
-  if (e.key === 'ArrowUp' || e.key === 'w') player.moveUp();
-});
+        // Player skin selection with localStorage persistence
+        const playerSpriteOptions = {
+            gray: path + "/images/projects/castle-game/grayKnight.png",
+            green: path + "/images/projects/castle-game/greenKnight.png",
+            dark: path + "/images/projects/castle-game/darkKnight.png"
+        };
+        const playerSkinStorageKey = 'castleGame.playerSkin';
+        const getPlayerSpriteSrc = (skinKey) => playerSpriteOptions[skinKey] || playerSpriteOptions.gray;
+        const getStoredPlayerSkinKey = () => {
+            try {
+                if (typeof window === 'undefined' || !window.localStorage) {
+                    return 'gray';
+                }
+                const stored = window.localStorage.getItem(playerSkinStorageKey);
+                if (stored && playerSpriteOptions[stored]) {
+                    return stored;
+                }
+                window.localStorage.setItem(playerSkinStorageKey, 'gray');
+                return 'gray';
+            } catch (error) {
+                return 'gray';
+            }
+        };
 
-// simple API fetch for NPC
-async function fetchNpcHints(npcId) {
-  const res = await fetch(`/api/npc/${npcId}`);
-  if (!res.ok) throw new Error(res.statusText);
-  return res.json();
+        // Sir Morty NPC with AI knowledge base
+        const sir_morty = path + "/images/projects/castle-game/mortyKnight.png";
+        const sir_morty_data = {
+            id: "Sir Morty",
+            greeting: "Hello! I'm Sir Morty!",
+            src: sir_morty,
+            SCALE_FACTOR: 7,
+            INIT_POSITION: { x: 1259/1667 * width, y: 430/1137 * height },
+            expertise: "default",
+            chatHistory: [],
+            dialogues: [
+                "Enter the castle if you dare!",
+                "The Dark Knight awaits inside."
+            ],
+            knowledgeBase: {
+                default: [
+                    {
+                        question: "What is inside the castle?",
+                        answer: "Inside the castle lays a prisoner who has been locked away for years. The Dark Knight guards the castle and challenges anyone who dares to enter with an archery test, a maze, and a showdown inside the fortress."
+                    },
+                    {
+                        question: "How do I win the game?",
+                        answer: "To win the game, you need to successfully navigate through the castle grounds, complete the archery challenge, solve the maze, and defeat the Dark Knight in the fortress."
+                    }
+                ]
+            },
+            interact: function () {
+                AiNpc.showInteraction(this);
+            }
+        };
+
+        // Level object instantiation
+        this.classes = [
+            { class: GameEnvBackground, data: image_data_floor },
+            { class: Player, data: sprite_data_mc },
+            { class: StrictNpc, data: sprite_data_darkKnight },
+            { class: StrictNpc, data: sir_morty_data },
+            { class: StrictNpc, data: sprite_data_closet },
+            { class: SpriteSheetCoin, data: gem_data },
+            { class: SplineBarrier, data: left_wall },
+            { class: SplineBarrier, data: right_wall }
+        ];
+    }
 }
+
+export default GameLevelOutside;
 ```
+
+## Key Features Demonstrated
+
+1. **Constructor Parameter**: `constructor(gameEnv)` receives game environment
+2. **Configuration Objects**: Multiple configuration objects for different game objects
+3. **localStorage API**: `window.localStorage.getItem()` and `setItem()` for persistence
+4. **Error Handling**: Try/catch blocks for storage access (lines 27-34)
+5. **Conditional Logic**: Fallback values and validation (lines 31-35)
+6. **API Integration**: `knowledgeBase` object provides context for NPC AI responses
+7. **Object Instantiation Array**: `this.classes` array pairs classes with their configuration data
+8. **Multiple Object Types**: Background, Player, NPCs, Collectibles, and Barriers all instantiated together
