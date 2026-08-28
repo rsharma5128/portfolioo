@@ -5,7 +5,38 @@ permalink: /about/
 comments: true
 ---
 
-## As a conversation Starter
+<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+  <a href="https://rsharma5128.opencodingsociety.com/" style="text-decoration: none;">
+    <div style="
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 999px;
+      background: #1a0a2e;
+      border: 1.5px solid #7c3aed;
+      color: #fff;
+      font-weight: bold;
+      font-family: system-ui, sans-serif;
+      cursor: pointer;
+      animation: pulse 2.8s ease-in-out infinite, textglow 2.8s ease-in-out infinite;
+      transition: transform 0.15s;
+    ">
+      🔗 Link back to the homepage
+    </div>
+  </a>
+</div>
+
+<style>
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 18px 6px #a78bfa, 0 0 40px 12px #7c3aed55; }
+    50%       { box-shadow: 0 0 28px 10px #c4b5fd, 0 0 60px 20px #7c3aed88; }
+  }
+  @keyframes textglow {
+    0%, 100% { text-shadow: 0 0 8px #e9d5ff, 0 0 20px #c084fc, 0 0 40px #a855f7; }
+    50%       { text-shadow: 0 0 14px #f3e8ff, 0 0 30px #e879f9, 0 0 60px #c026d3; }
+  }
+</style>
+
+## Where I have been
 
 Here are some places I have lived.
 
@@ -59,11 +90,10 @@ Flags are made using Wikipedia images
 
     // 2. Define a JavaScript object for our http source and our data rows for the Living in the World grid
     var http_source = "https://upload.wikimedia.org/wikipedia/commons/";
+
     var living_in_the_world = [
-        {"flag": "0/01/Flag_of_California.svg", "greeting": "Hey", "description": "California - forever"},
-        {"flag": "b/b9/Flag_of_Oregon.svg", "greeting": "Hi", "description": "Oregon - 9 years"},
-        {"flag": "b/be/Flag_of_England.svg", "greeting": "Alright mate", "description": "England - 2 years"},
-        {"flag": "e/ef/Flag_of_Hawaii.svg", "greeting": "Aloha", "description": "Hawaii - 2 years"},
+        {flag: "0/01/Flag_of_California.svg", greeting: "Hello!", description: "California - all my life!!!"}, {flag: "8/88/Flag_of_India_%282-1%29.svg", greeting: "Namaste Beta", description: "India - where my parents are from"}
+
     ];
 
     // 3a. Consider how to update style count for size of container
@@ -99,40 +129,106 @@ Flags are made using Wikipedia images
 
 ### Journey through Life
 
-Here is what I did at those places
+Here is where life has taken me!
 
-- 🏫 Lots of Elementary Schools in Tucson, LA, Honolulu, and Glendale (CA)
-- 🏫 Middle and High School in Glendale (CA), Hoover High graduated '77
-- 🎓 Glendale CA Community College, UCLA Extension, LA Wilshire Computer Tech School '77 to '79
-- ⛪ England, London Missionary for Church of Jesus Christ of Latter-day Saints '79 to '81
-- 💼 Culver City, Glendale CA founder at Ashton-Tate, original PC's dBase 2 and 3 '82 to '87
-- 🎓 Eugene Oregon Undergraduate CompSci Degree at University of Oregon (Go Ducks!) '89 to '91
-- 💼 Eugene Oregon, founder and owner @ Microniche `88, Point Control CAD CAM developer '91 to '96
-- 🏢 San Diego CA Qualcomm, Satellite Comm and 1st Mobile OS (BREW) '96 to '19
-- 👨‍🏫 San Diego CA Teacher of Computer Science @ Del Norte High School San Diego '19 to present
+**School**
 
-### Culture, Family, and Fun
+- 🏫 Deer Canyon Elementary School(2015-2016)
 
-Everything for me, as for many others, revolves around family and faith.
+- 🏫 Stone Ranch Elementary School(2016-2022)
 
-- My mother told me that I was Danish, English. and Irish, here is my researched [family tree]({{site.baseurl}}/images/about/familytree.png)
-- My family is pretty big as I have been married twice, my 1st wife passed away.  We have had 5 kids, 4 adopted by me, 1 biological.  Plus, there are three grandkids.  My name to my grandkids is Abuilito.
-- The gallery of pics has some of my family, fun, culture and faith memories.
+- 🏫 Oak Valley Middle School(2022-2025)
+
+- 🏫 Del Norte High School(Freshman year, 2025-Present)
+
+**Extracurricular**
+
+🛡️ 1 year of CyberPatriot
+
+🎵 Traditional Indian vocal music since I was 5 years old
+
+🎾 Used to play tennis
+
+🏃 Started Cross Country this year
+
+🥍 Currently in Lacrosse pre-season
+
+💻 Helped my friend Matt with game developing in Roblox Studio
+
+## Photo Gallery of my Interests
+
+<div class="grid-container" id="roblox_grid"></div>
+
+
+<script>
+   var robloxContainer = document.getElementById("roblox_grid");
+  
+   var projects = [
+       {
+           image: "https://upload.wikimedia.org/wikipedia/commons/5/52/YouTube_social_white_circle_%282017%29.svg",
+           title: "YouTube",
+           description: "I enjoy watching videos about hardware and cars on YouTube, as those are 2 fields which interest me. I enjoy watching YouTubers such as Garbage Time, Psivewri, and Salem Techsperts."
+       },
+       {
+           image: "https://upload.wikimedia.org/wikipedia/commons/4/48/Roblox_Logo_2021.png",
+           title: "Roblox",
+           description: "I enjoy playing games on Roblox in my free time, and I play games such as Jailbreak, Infamy and Arcane Odyssey with my friend Kyle and games like Riotfall by myself."
+       },
+       {
+           image: "https://upload.wikimedia.org/wikipedia/commons/f/f9/Initial_D_Logo.png",
+           title: "Initial D",
+           description: "Initial D was an anime which aired from 1998 to 2010. It is an anime about an 18 year old teenager delivering tofu in mountain passes late at night and how he gets exposed to the world of illegal street racing. I enjoy watching this anime because of the techniques used which also relate to properties of physics."
+       },
+       {
+        image: "https://upload.wikimedia.org/wikipedia/commons/8/8e/IFixit_logo.svg",
+        title: "Computer Repair",
+        description: "In my free time, I occasionally enjoy repairing computers. It is stressful at times, but I find pleasure in doing things like reapplying thermal paste and fixing broken computers to a state of working again. I chose the IFixit logo to represent this as the guides on there have helped me a lot with some of the repairs that I do."
+       }
+   ];
+
+
+   for (const project of projects) {
+       var gridItem = document.createElement("div");
+       gridItem.className = "grid-item";
+
+
+       var img = document.createElement("img");
+       img.src = project.image;
+       img.alt = project.title;
+
+
+       var title = document.createElement("p");
+       title.textContent = project.title;
+
+
+       var description = document.createElement("p");
+       description.textContent = project.description;
+
+
+       gridItem.appendChild(img);
+       gridItem.appendChild(title);
+       gridItem.appendChild(description);
+       robloxContainer.appendChild(gridItem);
+   }
+</script>
+
+
+
+### Background
+
+My family is my main inspiration, and they are the reason I am still here today and in this CS class!
+
+👩🏻 1 older sister in college
+
+🇮🇳 Both parents from India, more specifically southern region, with my dad being from Karnataka and my mom being from Tamil Nadu
+
+👨‍👩‍👦 My cousins are more on my dad's side, and a lot of them live in India, but 2 of them live in the US and one of them lives in the UK
 
 <comment>
-Gallery of Pics, scroll to the right for more ...
+Gallery of Pics...
 </comment>
 <div class="image-gallery">
-  <img src="{{site.baseurl}}/images/about/missionary.jpg" alt="Image 1">
-  <img src="{{site.baseurl}}/images/about/john_tamara.jpg" alt="Image 2">
-  <img src="{{site.baseurl}}/images/about/tamara_fam.jpg" alt="Image 3">
-  <img src="{{site.baseurl}}/images/about/surf.jpg" alt="Image 4">
-  <img src="{{site.baseurl}}/images/about/john_lora.jpg" alt="Image 5">
-  <img src="{{site.baseurl}}/images/about/lora_fam.jpg" alt="Image 6">
-  <img src="{{site.baseurl}}/images/about/lora_fam2.jpg" alt="Image 7">
-  <img src="{{site.baseurl}}/images/about/pj_party.jpg" alt="Image 8">
-  <img src="{{site.baseurl}}/images/about/trent_family.png" alt="Image 9">
-  <img src="{{site.baseurl}}/images/about/claire.jpg" alt="Image 10">
-  <img src="{{site.baseurl}}/images/about/grandkids.jpg" alt="Image 11">
-  <img src="{{site.baseurl}}/images/about/farm.jpg" alt="Image 12">
+  <img src="{{site.baseurl}}/images/about/mort2.jpg" alt="Image 2">
+  <img src="{{site.baseurl}}/images/about/mort4.jpg" alt="Image 3">
+  <img src="{{site.baseurl}}/images/about/mort5.jpg" alt="Image 3">
 </div>
