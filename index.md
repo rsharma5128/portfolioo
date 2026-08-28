@@ -59,7 +59,7 @@ Hi! My name is Rohan Sharma.
   </style>
 </head>
 <body>
-  <a href="https://rsharma5128.github.io/portfolio/about/" class="glow-btn">Here's a little bit about me!</a>
+  <a href="{{ '/about/' | relative_url }}" class="glow-btn">Here's a little bit about me!</a>
 </body>
 </html>
 <br>
