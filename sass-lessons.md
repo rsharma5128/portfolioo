@@ -16,7 +16,6 @@ search_exclude: true
     <a class="lesson-hub-btn" href="{{ '/sass/grids-solved/' | relative_url }}">Grids</a>
     <a class="lesson-hub-btn" href="{{ '/sass/toggles-solved/' | relative_url }}">Toggles</a>
     <a class="lesson-hub-btn" href="{{ '/sass/typography-solved/' | relative_url }}">Typography</a>
-    <a class="lesson-hub-btn" href="{{ '/sass/guide-solved/' | relative_url }}">SASS Guide</a>
     <a class="lesson-hub-btn" href="{{ '/sass/containers-solved/' | relative_url }}">Containers</a>
   </div>
 
