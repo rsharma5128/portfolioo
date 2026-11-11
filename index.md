@@ -189,4 +189,58 @@ Hi! My name is Rohan Sharma.
 </body>
 </html>
 
+## Here are the SASS and Python homework lessons.
 
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glowing Button</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0d0d0d;
+      font-family: system-ui, sans-serif;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 18px 6px #fcd34d, 0 0 40px 12px #d97706aa; }
+      50%       { box-shadow: 0 0 28px 10px #fde68a, 0 0 60px 20px #f59e0bcc; }
+    }
+
+    @keyframes textglow {
+      0%, 100% { text-shadow: 0 0 8px #fef3c7, 0 0 20px #fcd34d, 0 0 40px #f59e0b; }
+      50%       { text-shadow: 0 0 14px #fffbeb, 0 0 30px #fde68a, 0 0 60px #d97706; }
+    }
+
+    .glow-btn {
+      display: inline-block;
+      padding: 18px 48px;
+      border-radius: 999px;
+      background: #1a1200;
+      border: 1.5px solid #d97706;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      cursor: pointer;
+      animation: pulse 2.8s ease-in-out infinite,
+                 textglow 2.8s ease-in-out infinite;
+      transition: transform 0.15s;
+    }
+
+    .glow-btn:hover  { transform: scale(1.04); }
+    .glow-btn:active { transform: scale(0.97); }
+  </style>
+</head>
+<body>
+  <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;align-items:center;">
+    <a href="{{ '/sass-python-lessons/' | relative_url }}" class="glow-btn">SASS Lessons</a>
+  </div>
+</body>
+</html>
