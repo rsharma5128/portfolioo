@@ -183,8 +183,6 @@ Hi! My name is Rohan Sharma.
 <body>
   <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;align-items:center;">
     <a href="https://pages.opencodingsociety.com/js/nested-conditionals" class="glow-btn">Nested Conditionals</a>
-    <a href="{{ '/sass-lessons/' | relative_url }}" class="glow-btn">SASS Lessons</a>
-    <a href="{{ '/python-lessons/' | relative_url }}" class="glow-btn">Python Lessons</a>
   </div>
 </body>
 </html>
